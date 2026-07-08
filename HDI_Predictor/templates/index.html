@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Human Development Index Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="card">
+
+
+        <h1>
+            Human Development Index Predictor
+        </h1>
+
+
+        <p class="subtitle">
+            Predict HDI score based on health, education and income indicators
+        </p>
+
+
+
+        <form action="/predict" method="POST">
+
+
+            <label>
+                Life Expectancy
+            </label>
+
+            <input 
+            type="number"
+            step="any"
+            name="life_expectancy"
+            placeholder="Example: 70"
+            required>
+
+
+
+            <label>
+                Expected Schooling
+            </label>
+
+            <input 
+            type="number"
+            step="any"
+            name="expected_schooling"
+            placeholder="Example: 12"
+            required>
+
+
+
+            <label>
+                Mean Schooling
+            </label>
+
+            <input 
+            type="number"
+            step="any"
+            name="mean_schooling"
+            placeholder="Example: 8"
+            required>
+
+
+
+            <label>
+                GNI per Capita
+            </label>
+
+            <input 
+            type="number"
+            step="any"
+            name="gni"
+            placeholder="Example: 10000"
+            required>
+
+
+
+            <button type="submit">
+                Predict HDI
+            </button>
+
+
+        </form>
+
+
+
+        {% if prediction %}
+
+        <div class="result">
+
+
+            <h2>
+                Prediction Result
+            </h2>
+
+
+            <p>
+                Predicted HDI Score:
+                <b>{{prediction}}</b>
+            </p>
+
+
+            <p>
+                Development Level:
+                <b>{{category}}</b>
+            </p>
+
+
+        </div>
+
+        {% endif %}
+
+
+
+
+        <div class="about">
+
+
+            <h2>
+                About Human Development Index (HDI)
+            </h2>
+
+
+            <p>
+                HDI measures the overall development of a country
+                using three major dimensions:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <b>Health</b> - Life Expectancy
+                </li>
+
+
+                <li>
+                    <b>Education</b> - Expected and Mean Schooling Years
+                </li>
+
+
+                <li>
+                    <b>Income</b> - GNI per Capita
+                </li>
+
+            </ul>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
